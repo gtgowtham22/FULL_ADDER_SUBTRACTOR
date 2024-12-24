@@ -45,22 +45,51 @@ Write the detailed procedure here
 
 **Program:**
 ```
-module exp4(a,b,cy,sm,df,bo);
-input a,b;
-output sm,cy,df,bo;
-xor(sm,a,b);
-and(cy,a,b);
-xor(df,a,b);
-and(bo,~a,b);
-endmodule
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:24901330
-*/
-```
-**RTL Schematic**
-![ep4 rtl view](https://github.com/user-attachments/assets/502df6c5-5769-4e70-a38c-5aa478947a3f)
+Program to design a full adder and full subtractor circuit and verify its truth table in quartus using Verilog programming. 
+Developed by:G.T.GOWTHAM
+RegisterNumber: 24901330
 
-**Output Timing Waveform**
-![rtl waveform exp4](https://github.com/user-attachments/assets/17fdec3d-4f7b-4881-a308-a96b72d7c3b8)
+Full Adder
+
+module exp4(df,bo,a,b,bin);
+output df;
+output bo;
+input a;
+input b;
+input bin;
+wire w1,w2,w3;
+assign w1=a^b;
+assign w2=(~a&b);
+assign w3=(~w1&bin);
+assign df=w1^bin;
+assign bo=w2|w3;
+endmodule
+Full Subtractor
+
+module full_subtractor(diff, borrow, a, b, bin);
+  output diff;
+  output borrow;
+  input a;
+  input b;
+  input bin;
+  assign diff = a ^ b ^ bin;
+  assign borrow = (~a & b) | (~(a ^ b) & bin);
+endmodule
+
+
+```
+RTL Schematic Full Adder
+![394118789-993f7ad7-9159-46a4-8769-48a7a7b701f3](https://github.com/user-attachments/assets/3ab9325e-31fb-4a73-8a18-cc06679861aa)
+
+Full Subtractor
+![394120412-5d7d76ec-1151-443f-adde-8d9412dd223b](https://github.com/user-attachments/assets/e9dc8384-b8d7-4bac-9b02-e7e1cb40a8af)
+
+Output Timing Waveform Full Adder
+![3rd](https://github.com/user-attachments/assets/5b38fa88-8ede-4a29-a6a8-55610cbc7826)
+
+Full Subtractor
+![4th](https://github.com/user-attachments/assets/e1fac703-f516-4031-9e91-e9113f3b3519)
+
 
 **Result:**
 
